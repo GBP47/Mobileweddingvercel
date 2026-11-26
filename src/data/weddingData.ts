@@ -17,8 +17,8 @@ const GBSY_PHOTOS: GalleryPhoto[] = GBSY_IMAGES.map(([path, src]) => {
   return {
     id: `gbsy-${number}`,
     src,
-    alt: `박서진 · 김지은 웨딩 사진 ${number}`,
-    caption: '박서진 · 김지은',
+    alt: `박기범 · 정수연 웨딩 사진 ${number}`,
+    caption: '박기범 · 정수연',
   };
 });
 
@@ -50,28 +50,28 @@ export interface TransitSection {
 
 export const WEDDING_DATA = {
   groom: {
-    fullName: '박서진',
-    firstName: '서진',
-    father: '박민수',
-    mother: '이정희',
+    fullName: '박기범',
+    firstName: '기범',
+    father: '박상호',
+    mother: '우종분',
     order: '장남',
   },
   bride: {
-    fullName: '김지은',
-    firstName: '지은',
-    father: '김도현',
-    mother: '최은영',
+    fullName: '정수연',
+    firstName: '수연',
+    father: '정성호',
+    mother: '이순희',
     order: '장녀',
   },
   date: {
-    iso: '2027-04-24T13:00:00+09:00',
+    iso: '2027-04-24T11:00:00+09:00',
     year: 2027,
     month: 4,
     day: 24,
     weekday: '토요일',
-    timeLabel: '오후 1시',
+    timeLabel: '오전 11시',
     shortDate: '2027. 04. 24',
-    displayFull: '2027년 4월 24일 토요일 오후 1시',
+    displayFull: '2027년 4월 24일 토요일 오전 11시',
   },
   venue: {
     name: '밀리토피아호텔 웨딩센터',
@@ -88,12 +88,15 @@ export const WEDDING_DATA = {
   },
   photos: GBSY_PHOTOS,
   greeting: [
-    '서로 다른 시간을 살아온 두 사람이',
-    '이제 같은 마음으로 한 길을 걸어가려 합니다.',
+    '저녁 때 돌아갈 집이 있다는 것,',
+    '힘들 때 마음속으로 생각할 사람이 있다는 것,',
+    '외로울 때 혼자서 부를 노래가 있다는 것.',
     '',
-    '바쁘신 걸음이겠지만',
-    '오셔서 두 사람의 새로운 시작을',
-    '함께 축복해 주시면 큰 기쁨이겠습니다.',
+    '가을에 만나 삼 년 반의 시간 동안 서로에게',
+    '그런 존재가 되어준 두 사람이',
+    '이제 따스한 봄의 문턱에서 평생의 동반자가 되려 합니다.',
+    '저희가 함께 지어갈 첫 번째 봄날에 오셔서',
+    '따뜻하게 축복해 주세요.',
   ],
   transitSections: [
     {
@@ -169,28 +172,28 @@ export const WEDDING_DATA = {
     {
       side: 'groom',
       roleLabel: '신랑',
-      holder: '박서진',
+      holder: '박기범',
       bank: '카카오뱅크',
       accountNumber: '3333-04-8291042',
     },
     {
       side: 'groom',
       roleLabel: '신랑 아버지',
-      holder: '박민수',
+      holder: '박상호',
       bank: '신한은행',
       accountNumber: '110-412-908312',
     },
     {
       side: 'bride',
       roleLabel: '신부',
-      holder: '김지은',
+      holder: '정수연',
       bank: '토스뱅크',
       accountNumber: '1000-2910-4481',
     },
     {
       side: 'bride',
       roleLabel: '신부 어머니',
-      holder: '최은영',
+      holder: '이순희',
       bank: 'KB국민은행',
       accountNumber: '482102-01-394021',
     },
@@ -203,13 +206,13 @@ export function downloadWeddingIcs(): void {
     'VERSION:2.0',
     'PRODID:-//SeojinJieunWedding//MobileInvitation//KO',
     'BEGIN:VEVENT',
-    'UID:seojin-jieun-20270424@wedding.local',
+    'UID:kibeom-sooyeon-20270424@wedding.local',
     'DTSTAMP:20261125T000000Z',
-    'DTSTART;TZID=Asia/Seoul:20270424T130000',
-    'DTEND;TZID=Asia/Seoul:20270424T150000',
-    'SUMMARY:박서진 · 김지은 결혼식',
+    'DTSTART;TZID=Asia/Seoul:20270424T110000',
+    'DTEND;TZID=Asia/Seoul:20270424T130000',
+    'SUMMARY:박기범 · 정수연 결혼식',
     'LOCATION:경기도 성남시 수정구 위례대로 83 밀리토피아호텔 웨딩센터 2층 아이리스홀',
-    'DESCRIPTION:2027년 4월 24일 토요일 오후 1시, 박서진과 김지은의 결혼식입니다.',
+    'DESCRIPTION:2027년 4월 24일 토요일 오전 11시, 박기범과 정수연의 결혼식입니다.',
     'END:VEVENT',
     'END:VCALENDAR',
   ].join('\r\n');
@@ -218,7 +221,7 @@ export function downloadWeddingIcs(): void {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.download = '박서진_김지은_결혼식.ics';
+  link.download = '박기범_정수연_결혼식.ics';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
