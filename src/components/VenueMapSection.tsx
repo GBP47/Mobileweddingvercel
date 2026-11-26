@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Check, Copy, ExternalLink, Navigation, X } from 'lucide-react';
+import { Check, Copy, ExternalLink, X } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingData';
 
 export function VenueMapSection() {
-  const [showMapQuickLinks, setShowMapQuickLinks] = useState(false);
   const [showFullMapModal, setShowFullMapModal] = useState(false);
   const [mapImageError, setMapImageError] = useState(false);
   const [addressCopied, setAddressCopied] = useState(false);
@@ -34,11 +33,11 @@ export function VenueMapSection() {
   return (
     <section
       id="map"
-      className="py-20 md:py-28 px-6 max-w-3xl mx-auto border-b border-stone-200/80"
+      className="py-12 md:py-16 px-6 max-w-3xl mx-auto border-b border-stone-200/80"
       aria-labelledby="map-heading"
     >
       {/* Header */}
-      <div className="text-center mb-10">
+      <div className="text-center mb-6">
         <h2
           id="map-heading"
           className="font-editorial text-lg md:text-xl font-medium text-zinc-900 mb-3 tracking-wide"
@@ -72,21 +71,9 @@ export function VenueMapSection() {
       </div>
 
       {/* Venue Map Image (Click to open Kakao/Naver Navigation) */}
-      <div className="mb-12">
+      <div className="mb-7">
         <div className="border border-stone-200/80 bg-[#F7F3ED] overflow-hidden">
-          <div
-            role="button"
-            tabIndex={0}
-            onClick={() => setShowMapQuickLinks((prev) => !prev)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setShowMapQuickLinks((prev) => !prev);
-              }
-            }}
-            aria-label="밀리토피아호텔 웨딩센터 약도 (클릭 시 길찾기 열기)"
-            className="relative w-full cursor-pointer focus-visible:outline-2 focus-visible:outline-zinc-900"
-          >
+          <div className="relative w-full">
             {!mapImageError ? (
               <img
                 src={WEDDING_DATA.venue.mapImage}
@@ -101,86 +88,54 @@ export function VenueMapSection() {
               </div>
             )}
           </div>
-
-          {showMapQuickLinks && (
-            <div className="border-t border-stone-200 bg-white px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2.5">
-              <span className="text-xs text-zinc-700 flex items-center gap-1.5">
-                <Navigation className="w-3.5 h-3.5 text-zinc-600" aria-hidden="true" />
-                지도 앱으로 길찾기
-              </span>
-              <div className="grid grid-cols-2 gap-2 w-full sm:w-auto">
-                <a
-                  href={WEDDING_DATA.venue.kakaoMapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="min-h-[40px] px-4 py-2 rounded bg-[#FEE500] text-[#191919] text-xs font-medium inline-flex items-center justify-center gap-1.5 hover:brightness-95"
-                >
-                  <span>카카오맵</span>
-                  <ExternalLink className="w-3 h-3" aria-hidden="true" />
-                </a>
-                <a
-                  href={WEDDING_DATA.venue.naverMapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="min-h-[40px] px-4 py-2 rounded bg-[#03C75A] text-white text-xs font-medium inline-flex items-center justify-center gap-1.5 hover:brightness-95"
-                >
-                  <span>네이버 지도</span>
-                  <ExternalLink className="w-3 h-3" aria-hidden="true" />
-                </a>
-              </div>
-            </div>
-          )}
         </div>
 
-        {/* Direct Navigation App Buttons + Fullscreen Map Link */}
-        <div className="flex flex-wrap items-center justify-between gap-2 mt-3">
-          <div className="grid grid-cols-2 gap-2 flex-1 min-w-[240px]">
-            <a
-              href={WEDDING_DATA.venue.kakaoMapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="min-h-[44px] px-4 py-2.5 border border-stone-300 bg-white text-xs md:text-sm font-medium text-zinc-800 hover:bg-stone-50 inline-flex items-center justify-center gap-1.5 transition-colors"
-            >
-              <span>카카오맵 길찾기</span>
-              <ExternalLink className="w-3.5 h-3.5 text-stone-400" aria-hidden="true" />
-            </a>
-            <a
-              href={WEDDING_DATA.venue.naverMapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="min-h-[44px] px-4 py-2.5 border border-stone-300 bg-white text-xs md:text-sm font-medium text-zinc-800 hover:bg-stone-50 inline-flex items-center justify-center gap-1.5 transition-colors"
-            >
-              <span>네이버 지도 길찾기</span>
-              <ExternalLink className="w-3.5 h-3.5 text-stone-400" aria-hidden="true" />
-            </a>
-          </div>
+        <div className="grid grid-cols-2 gap-2 mt-2">
           <button
             type="button"
             onClick={() => setShowFullMapModal(true)}
-            className="min-h-[44px] px-4 py-2.5 border border-stone-300 bg-white text-xs text-stone-600 hover:text-zinc-900 hover:bg-stone-50 cursor-pointer"
+            className="col-span-2 min-h-[44px] px-4 py-2.5 border border-stone-300 bg-white text-sm font-medium text-zinc-800 hover:bg-stone-50 cursor-pointer"
           >
             약도 크게 보기
           </button>
+          <a
+            href={WEDDING_DATA.venue.kakaoMapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="min-h-[44px] px-2 py-2.5 border border-stone-300 bg-white text-xs md:text-sm font-medium text-zinc-800 hover:bg-stone-50 inline-flex items-center justify-center gap-1.5 transition-colors"
+          >
+            <span>카카오맵 길찾기</span>
+            <ExternalLink className="w-3.5 h-3.5 text-stone-400" aria-hidden="true" />
+          </a>
+          <a
+            href={WEDDING_DATA.venue.naverMapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="min-h-[44px] px-2 py-2.5 border border-stone-300 bg-white text-xs md:text-sm font-medium text-zinc-800 hover:bg-stone-50 inline-flex items-center justify-center gap-1.5 transition-colors"
+          >
+            <span>네이버 지도 길찾기</span>
+            <ExternalLink className="w-3.5 h-3.5 text-stone-400" aria-hidden="true" />
+          </a>
         </div>
       </div>
 
       {/* Exact Verbatim Transit Instructions */}
       <div className="divide-y divide-stone-200/80 border-t border-stone-200/80">
         {WEDDING_DATA.transitSections.map((section) => (
-          <div key={section.title} className="py-6">
+          <div key={section.title} className="py-3.5">
             <h3 className="text-sm font-semibold text-zinc-900 mb-3">
               {section.title}
             </h3>
 
-            <div className="space-y-4">
+            <div className="space-y-2.5">
               {section.groups.map((group, idx) => (
                 <div key={group.label ?? idx}>
                   {group.label && (
-                    <p className="text-xs md:text-sm font-medium text-zinc-800 mb-1.5">
+                    <p className="text-sm font-medium text-zinc-800 mb-1">
                       {group.label}
                     </p>
                   )}
-                  <ul className="space-y-1.5 text-sm text-zinc-700 leading-relaxed">
+                  <ul className="space-y-1 text-sm text-zinc-700 leading-relaxed">
                     {group.items.map((item) => (
                       <li key={item} className="flex items-start gap-2">
                         <span className="text-stone-400 select-none" aria-hidden="true">

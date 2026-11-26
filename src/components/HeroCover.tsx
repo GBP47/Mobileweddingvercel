@@ -21,7 +21,7 @@ export function HeroCover({
   return (
     <section
       id="top"
-      className="relative h-[100dvh] w-full overflow-hidden bg-zinc-900 select-none"
+      className="relative h-[88svh] min-h-[560px] w-full overflow-hidden bg-zinc-900 select-none"
       aria-labelledby="wedding-title"
     >
       {!imageError ? (
@@ -59,7 +59,7 @@ export function HeroCover({
 
       <div className="relative z-10 h-full max-w-4xl mx-auto px-6 py-8 md:py-10 flex flex-col justify-between text-white">
         <div className="flex items-center justify-between">
-          <span className="text-xs tracking-[0.2em] text-white/85 tabular-nums">
+          <span className="text-xl tracking-[0.12em] text-white/90 tabular-nums">
             {WEDDING_DATA.date.shortDate}
           </span>
 

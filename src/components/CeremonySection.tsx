@@ -14,14 +14,14 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
   return (
     <section
       id="ceremony"
-      className="py-20 md:py-28 px-6 max-w-3xl mx-auto border-b border-stone-200/80"
+      className="py-12 md:py-16 px-6 max-w-3xl mx-auto border-b border-stone-200/80"
       aria-labelledby="ceremony-heading"
     >
       {/* Greeting */}
-      <div className="text-center max-w-md mx-auto mb-16">
+      <div className="text-center max-w-md mx-auto mb-9">
         <h2
           id="ceremony-heading"
-          className="font-editorial text-lg md:text-xl font-medium text-zinc-900 mb-8 tracking-wide"
+          className="font-editorial text-lg md:text-xl font-medium text-zinc-900 mb-5 tracking-wide"
         >
           모시는 글
         </h2>
@@ -36,7 +36,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
           )}
         </div>
 
-        <div className="mt-10 pt-8 border-t border-stone-200/80 space-y-2 text-[14px] text-zinc-800">
+        <div className="mt-6 pt-5 border-t border-stone-200/80 space-y-2 text-[14px] text-zinc-800">
           <p>
             <span className="font-medium text-zinc-900">
               {WEDDING_DATA.groom.father} · {WEDDING_DATA.groom.mother}
@@ -59,7 +59,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
       </div>
 
       {/* Unboxed Calm Monochrome Photo Strip */}
-      <div className="mb-16 -mx-6">
+      <div className="mb-8 -mx-6">
         <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory px-6 pb-3 overscroll-x-contain [scrollbar-width:thin]">
           {galleryPhotos.map((photo, idx) => (
             <button
@@ -83,15 +83,15 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
       </div>
 
       {/* Unboxed April 2027 Typographic Calendar */}
-      <div className="max-w-sm mx-auto py-10 border-t border-stone-200/80 text-center">
+      <div className="max-w-sm mx-auto py-6 border-t border-stone-200/80 text-center">
         <p className="font-editorial text-base font-medium text-zinc-900 mb-1">
           {WEDDING_DATA.date.displayFull}
         </p>
-        <p className="text-xs text-stone-500 mb-8">
+        <p className="text-xs text-stone-500 mb-4">
           {WEDDING_DATA.venue.fullName}
         </p>
 
-        <div className="mb-6">
+        <div className="mb-3">
           <p className="font-handwriting text-3xl text-stone-700 mb-4 tracking-wide">
             2027. 04
           </p>
