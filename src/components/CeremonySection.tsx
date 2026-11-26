@@ -59,15 +59,15 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
       </div>
 
       {/* Unboxed Calm Monochrome Photo Strip */}
-      <div className="mb-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-4">
+      <div className="mb-16 -mx-6">
+        <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory px-6 pb-3 overscroll-x-contain [scrollbar-width:thin]">
           {galleryPhotos.map((photo, idx) => (
             <button
               key={photo.id}
               type="button"
               onClick={() => onOpenSlideshow(idx + 1)}
               aria-label={`${photo.alt} 크게 보기`}
-              className="group relative aspect-[3/4] overflow-hidden bg-stone-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
+              className="group relative aspect-[4/5] w-[72vw] max-w-[280px] flex-none snap-center overflow-hidden rounded-sm bg-stone-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
             >
               <img
                 src={photo.src}
@@ -92,7 +92,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
         </p>
 
         <div className="mb-6">
-          <p className="text-xs text-stone-500 mb-4 tracking-[0.2em] tabular-nums">
+          <p className="font-handwriting text-3xl text-stone-700 mb-4 tracking-wide">
             2027. 04
           </p>
           <div className="grid grid-cols-7 text-center text-xs text-stone-400 mb-2.5">
@@ -102,7 +102,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
               </span>
             ))}
           </div>
-          <div className="grid grid-cols-7 gap-y-2 text-center text-sm tabular-nums">
+          <div className="grid grid-cols-7 gap-y-2 text-center text-lg font-handwriting">
             {Array.from({ length: leadingBlanks }).map((_, i) => (
               <span key={`blank-${i}`} />
             ))}
@@ -115,7 +115,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
                   <span
                     className={
                       isWeddingDay
-                        ? 'w-8 h-8 rounded-full bg-zinc-900 text-white font-medium flex items-center justify-center'
+                        ? 'w-9 h-9 rounded-full bg-rose-100 text-rose-900 ring-1 ring-rose-300 font-medium flex items-center justify-center'
                         : isSunday
                           ? 'text-rose-500/75'
                           : 'text-zinc-700'
