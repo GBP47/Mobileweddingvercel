@@ -18,7 +18,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
       aria-labelledby="ceremony-heading"
     >
       {/* Greeting */}
-      <div className="text-center max-w-md mx-auto mb-9">
+      <div className="text-center max-w-lg mx-auto mb-9">
         <h2
           id="ceremony-heading"
           className="font-editorial text-lg md:text-xl font-medium text-zinc-900 mb-5 tracking-wide"
@@ -26,20 +26,12 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
           모시는 글
         </h2>
 
-        <div className="font-editorial text-zinc-700 leading-[2.05] space-y-0.5">
+        <div className="font-editorial text-[15px] text-zinc-700 leading-[1.9] space-y-1">
           {WEDDING_DATA.greeting.map((line, idx) =>
             line === '' ? (
               <div key={idx} className="h-4" aria-hidden="true" />
             ) : (
-              <p
-                key={idx}
-                className="whitespace-nowrap mx-auto w-max max-w-none"
-                style={{
-                  fontSize: `min(14px, calc((100vw - 48px) / ${Array.from(line).length}), calc(448px / ${Array.from(line).length}))`,
-                }}
-              >
-                {line}
-              </p>
+              <p key={idx}>{line}</p>
             )
           )}
         </div>

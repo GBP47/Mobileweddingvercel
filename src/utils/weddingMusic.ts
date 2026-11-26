@@ -32,22 +32,9 @@ class WeddingMusicPlayer {
   private noteIndex = 0;
   private playing = false;
   private customAudio: HTMLAudioElement | null = null;
-  private customUrl: string | null = null;
 
   public isPlaying(): boolean {
     return this.playing;
-  }
-
-  public setCustomAudioFile(file: File): void {
-    this.stop();
-    if (this.customUrl) {
-      URL.revokeObjectURL(this.customUrl);
-    }
-    this.customUrl = URL.createObjectURL(file);
-    const audio = new Audio(this.customUrl);
-    audio.loop = true;
-    audio.volume = 0.5;
-    this.customAudio = audio;
   }
 
   public async toggle(): Promise<boolean> {
@@ -62,10 +49,19 @@ class WeddingMusicPlayer {
   public async start(): Promise<void> {
     if (this.playing) return;
 
-    if (this.customAudio) {
+    if (!this.customAudio) {
+      this.customAudio = new Audio(`${import.meta.env.BASE_URL}music/wedding.mp3`);
+      this.customAudio.loop = true;
+      this.customAudio.volume = 0.5;
+    }
+
+    try {
       await this.customAudio.play();
       this.playing = true;
       return;
+    } catch {
+      // Keep the built-in melody as a fallback until an MP3 is added.
+      this.customAudio = null;
     }
 
     const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
