@@ -19,11 +19,11 @@ export function AccountsSection() {
   return (
     <section
       id="accounts"
-      className="py-12 md:py-16 px-6 max-w-3xl mx-auto"
+      className="pt-6 pb-10 md:pt-8 md:pb-12 px-6 max-w-3xl mx-auto"
       aria-labelledby="accounts-heading"
     >
       <div className="max-w-md mx-auto">
-        <div className="text-center mb-8">
+        <div className="text-center mb-5">
           <h2
             id="accounts-heading"
             className="font-editorial text-lg md:text-xl font-medium text-zinc-900 mb-2 tracking-wide"

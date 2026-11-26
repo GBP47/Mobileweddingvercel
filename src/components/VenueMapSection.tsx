@@ -33,11 +33,11 @@ export function VenueMapSection() {
   return (
     <section
       id="map"
-      className="py-12 md:py-16 px-6 max-w-3xl mx-auto border-b border-stone-200/80"
+      className="pt-8 pb-6 md:pt-10 md:pb-8 px-6 max-w-3xl mx-auto border-b border-stone-200/80"
       aria-labelledby="map-heading"
     >
       {/* Header */}
-      <div className="text-center mb-6">
+      <div className="text-center mb-4">
         <h2
           id="map-heading"
           className="font-editorial text-lg md:text-xl font-medium text-zinc-900 mb-3 tracking-wide"
@@ -71,7 +71,7 @@ export function VenueMapSection() {
       </div>
 
       {/* Venue Map Image (Click to open Kakao/Naver Navigation) */}
-      <div className="mb-7">
+      <div className="mb-4">
         <div className="border border-stone-200/80 bg-[#F7F3ED] overflow-hidden">
           <div className="relative w-full">
             {!mapImageError ? (
@@ -122,8 +122,8 @@ export function VenueMapSection() {
       {/* Exact Verbatim Transit Instructions */}
       <div className="divide-y divide-stone-200/80 border-t border-stone-200/80">
         {WEDDING_DATA.transitSections.map((section) => (
-          <div key={section.title} className="py-3.5">
-            <h3 className="text-sm font-semibold text-zinc-900 mb-3">
+          <div key={section.title} className="py-2.5">
+            <h3 className="text-sm font-semibold text-zinc-900 mb-2">
               {section.title}
             </h3>
 

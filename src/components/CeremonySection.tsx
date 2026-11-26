@@ -14,7 +14,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
   return (
     <section
       id="ceremony"
-      className="py-12 md:py-16 px-6 max-w-3xl mx-auto border-b border-stone-200/80"
+      className="pt-10 pb-6 md:pt-12 md:pb-8 px-6 max-w-3xl mx-auto border-b border-stone-200/80"
       aria-labelledby="ceremony-heading"
     >
       {/* Greeting */}
@@ -26,12 +26,20 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
           모시는 글
         </h2>
 
-        <div className="font-editorial text-[15px] text-zinc-700 leading-[2.05] space-y-0.5">
+        <div className="font-editorial text-zinc-700 leading-[2.05] space-y-0.5">
           {WEDDING_DATA.greeting.map((line, idx) =>
             line === '' ? (
               <div key={idx} className="h-4" aria-hidden="true" />
             ) : (
-              <p key={idx}>{line}</p>
+              <p
+                key={idx}
+                className="whitespace-nowrap mx-auto w-max max-w-none"
+                style={{
+                  fontSize: `min(14px, calc((100vw - 48px) / ${Array.from(line).length}), calc(448px / ${Array.from(line).length}))`,
+                }}
+              >
+                {line}
+              </p>
             )
           )}
         </div>
@@ -83,7 +91,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
       </div>
 
       {/* Unboxed April 2027 Typographic Calendar */}
-      <div className="max-w-sm mx-auto py-6 border-t border-stone-200/80 text-center">
+      <div className="max-w-sm mx-auto py-4 border-t border-stone-200/80 text-center">
         <p className="font-editorial text-base font-medium text-zinc-900 mb-1">
           {WEDDING_DATA.date.displayFull}
         </p>
@@ -92,7 +100,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
         </p>
 
         <div className="mb-3">
-          <p className="font-handwriting text-3xl text-stone-700 mb-4 tracking-wide">
+          <p className="font-editorial text-2xl text-stone-700 mb-3 tracking-wide">
             2027. 04
           </p>
           <div className="grid grid-cols-7 text-center text-xs text-stone-400 mb-2.5">
@@ -102,7 +110,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
               </span>
             ))}
           </div>
-          <div className="grid grid-cols-7 gap-y-2 text-center text-lg font-handwriting">
+          <div className="grid grid-cols-7 gap-y-1.5 text-center text-base font-editorial">
             {Array.from({ length: leadingBlanks }).map((_, i) => (
               <span key={`blank-${i}`} />
             ))}

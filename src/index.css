@@ -3,7 +3,6 @@
 @theme {
   --font-serif-kr: "Noto Serif KR", Georgia, serif;
   --font-sans-kr: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-handwriting-kr: "Nanum Brush Script", cursive;
 }
 
 @layer base {
@@ -28,10 +27,6 @@
 
 .font-editorial {
   font-family: var(--font-serif-kr);
-}
-
-.font-handwriting {
-  font-family: var(--font-handwriting-kr);
 }
 
 .pb-safe {

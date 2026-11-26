@@ -175,7 +175,7 @@ export default function App() {
       />
 
       {/* Quiet Editorial Footer */}
-      <footer className="border-t border-stone-200/80 py-12 px-6 pb-safe">
+      <footer className="border-t border-stone-200/80 pt-12 px-6 pb-[calc(env(safe-area-inset-bottom,0px)+5rem)]">
         <div className="max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
           <div>
             <p className="font-editorial text-sm font-medium text-zinc-900">
