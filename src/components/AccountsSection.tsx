@@ -32,6 +32,7 @@ export function AccountsSection() {
           </h2>
           <p className="text-xs md:text-sm text-stone-500">
             축하해 주시는 마음만으로도 큰 기쁨입니다.
+            <br />
             부득이하게 참석이 어려우신 분들을 위해 계좌번호를 함께 남깁니다.
           </p>
         </div>
