@@ -52,7 +52,7 @@ class WeddingMusicPlayer {
     if (!this.customAudio) {
       this.customAudio = new Audio(`${import.meta.env.BASE_URL}music/wedding.mp3`);
       this.customAudio.loop = true;
-      this.customAudio.volume = 0.5;
+      this.customAudio.volume = 0.1;
     }
 
     try {
@@ -68,7 +68,7 @@ class WeddingMusicPlayer {
     if (!this.ctx) {
       this.ctx = new AudioCtx();
       this.masterGain = this.ctx.createGain();
-      this.masterGain.gain.value = 0.16;
+      this.masterGain.gain.value = 0.032;
 
       const filter = this.ctx.createBiquadFilter();
       filter.type = 'lowpass';
