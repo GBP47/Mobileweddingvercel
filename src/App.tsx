@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type ChangeEvent } from 'react';
-import { ArrowUp, Check, MessageCircle, Music, Pause, Share2, Volume2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowUp, Check, MessageCircle, Pause, Share2, Volume2 } from 'lucide-react';
 import { AccountsSection } from './components/AccountsSection';
 import { CeremonySection } from './components/CeremonySection';
 import { HeroCover } from './components/HeroCover';
@@ -13,13 +13,10 @@ export default function App() {
   const [showStickyNav, setShowStickyNav] = useState(false);
   const [shareFeedback, setShareFeedback] = useState<string | null>(null);
   const [musicPlaying, setMusicPlaying] = useState(false);
-  const [customSongName, setCustomSongName] = useState<string | null>(null);
   const [slideshow, setSlideshow] = useState<{ isOpen: boolean; initialIndex: number }>({
     isOpen: false,
     initialIndex: 0,
   });
-
-  const audioInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -49,15 +46,6 @@ export default function App() {
     setMusicPlaying(playing);
   };
 
-  const handleSelectAudioFile = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    weddingMusicPlayer.setCustomAudioFile(file);
-    setCustomSongName(file.name);
-    await weddingMusicPlayer.start();
-    setMusicPlaying(true);
-  };
-
   const handleKakaoShare = async () => {
     const outcome = await shareWeddingToKakao();
     if (outcome === 'copied') {
@@ -81,15 +69,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
-      <input
-        ref={audioInputRef}
-        type="file"
-        accept="audio/*"
-        onChange={(e) => void handleSelectAudioFile(e)}
-        className="hidden"
-        aria-label="배경음악 음원 파일 선택"
-      />
-
       {/* Minimal Sticky Top Bar */}
       <header
         className={`fixed top-0 left-0 right-0 z-40 h-[50px] bg-[#FAF8F5]/92 backdrop-blur-md border-b border-stone-200/80 transition-all duration-200 ${
@@ -224,17 +203,6 @@ export default function App() {
             >
               <Share2 className="w-3.5 h-3.5 text-stone-500" aria-hidden="true" />
               <span>청첩장 주소 복사</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => audioInputRef.current?.click()}
-              className="min-h-[42px] px-3.5 py-2 border border-stone-300 bg-white text-xs text-stone-600 hover:text-zinc-900 hover:bg-stone-50 inline-flex items-center gap-1.5 cursor-pointer"
-            >
-              <Music className="w-3.5 h-3.5" aria-hidden="true" />
-              <span className="max-w-[110px] truncate">
-                {customSongName ?? '음원 변경'}
-              </span>
             </button>
 
             <button
