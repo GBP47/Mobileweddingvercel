@@ -60,7 +60,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
 
       {/* Unboxed Calm Monochrome Photo Strip */}
       <div className="mb-16">
-        <div className="grid grid-cols-3 gap-2.5 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-4">
           {galleryPhotos.map((photo, idx) => (
             <button
               key={photo.id}
@@ -73,6 +73,8 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
                 src={photo.src}
                 alt={photo.alt}
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
                 className="h-full w-full object-cover scale-[1.06] grayscale-[10%] transition-transform duration-500 group-hover:scale-[1.1]"
               />
             </button>
