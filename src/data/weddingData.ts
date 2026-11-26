@@ -1,7 +1,26 @@
-import heroCoverImg from '../assets/images/hero_bw_couple_1795611964775.jpg';
-import galleryWalkImg from '../assets/images/gallery_bw_walk_1795611964110.jpg';
-import galleryHandsImg from '../assets/images/gallery_bw_hands_1795611964457.jpg';
-import galleryRingsImg from '../assets/images/gallery_bw_rings_1795611964872.jpg';
+const GBSY_IMAGES = Object.entries(
+  import.meta.glob<string>('../assets/images/gbsy*', {
+    eager: true,
+    query: '?url',
+    import: 'default',
+  })
+)
+  .filter(([path]) => /\/gbsy\d+\.(jpe?g|png|webp)$/i.test(path))
+  .sort((a, b) => {
+    const numberA = Number(a[0].match(/gbsy(\d+)/i)?.[1] ?? 0);
+    const numberB = Number(b[0].match(/gbsy(\d+)/i)?.[1] ?? 0);
+    return numberA - numberB;
+  });
+
+const GBSY_PHOTOS: GalleryPhoto[] = GBSY_IMAGES.map(([path, src]) => {
+  const number = Number(path.match(/gbsy(\d+)/i)?.[1] ?? 0);
+  return {
+    id: `gbsy-${number}`,
+    src,
+    alt: `박서진 · 김지은 웨딩 사진 ${number}`,
+    caption: '박서진 · 김지은',
+  };
+});
 
 export interface AccountInfo {
   side: 'groom' | 'bride';
@@ -67,32 +86,7 @@ export const WEDDING_DATA = {
       'https://map.kakao.com/link/search/' +
       encodeURIComponent('밀리토피아호텔 웨딩센터'),
   },
-  photos: [
-    {
-      id: 'cover',
-      src: heroCoverImg,
-      alt: '창가 앞에 나란히 선 박서진과 김지은',
-      caption: '2027. 04. 24',
-    },
-    {
-      id: 'walk',
-      src: galleryWalkImg,
-      alt: '돌담길을 함께 걷는 박서진과 김지은',
-      caption: '박서진 · 김지은',
-    },
-    {
-      id: 'hands',
-      src: galleryHandsImg,
-      alt: '손을 맞잡은 두 사람과 부케',
-      caption: '2027년 4월 24일',
-    },
-    {
-      id: 'rings',
-      src: galleryRingsImg,
-      alt: '두 사람의 결혼반지와 흰 꽃',
-      caption: '밀리토피아호텔 웨딩센터 2층 아이리스홀',
-    },
-  ] as GalleryPhoto[],
+  photos: GBSY_PHOTOS,
   greeting: [
     '서로 다른 시간을 살아온 두 사람이',
     '이제 같은 마음으로 한 길을 걸어가려 합니다.',
