@@ -26,7 +26,7 @@ export function CeremonySection({ onOpenSlideshow }: CeremonySectionProps) {
           모시는 글
         </h2>
 
-        <div className="font-editorial text-[15px] text-zinc-700 leading-[1.9] space-y-1">
+        <div className="font-editorial text-[14px] text-zinc-700 leading-[1.9] space-y-1">
           {WEDDING_DATA.greeting.map((line, idx) =>
             line === '' ? (
               <div key={idx} className="h-4" aria-hidden="true" />
