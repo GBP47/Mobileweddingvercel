@@ -163,14 +163,14 @@ export const WEDDING_DATA = {
       roleLabel: '신랑 아버지',
       holder: '박상호',
       bank: '신한은행',
-      accountNumber: '',
+      accountNumber: '50306834830',
     },
     {
       side: 'groom',
       roleLabel: '신랑 어머니',
       holder: '우종분',
       bank: '신한은행',
-      accountNumber: '',
+      accountNumber: '50306953154',
     },    
     {
       side: 'bride',
